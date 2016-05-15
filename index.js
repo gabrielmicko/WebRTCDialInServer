@@ -40,7 +40,6 @@ SocketService.on('connection', function(socket) {
                   });
               }
               else {
-                //Van user User
                 book.getUserByNumber(data.number).then(function(User) {
                   if(User === false) {
                       book.editUserNumber({
@@ -112,18 +111,9 @@ SocketService.on('connection', function(socket) {
               book.getUserBySocketId(socket.id)
               .then(function(Caller) {
                 if(Caller !== false) {
-                  console.log('BB');
                     book.getUserByNumber(data.number)
                     .then(function(User) {
                         if(User !== false) {
-
-                            if(data.type  === 'answer') {
-                              console.log('Answer received');
-                              console.log('From:' + Caller.number);
-                              console.log('Data:', data);
-                              console.log('Type:', data.type);
-                              console.log('TO:', Caller.number);
-                            }
                             User.socket.emit('message', {
                                 'valid': true,
                                 'type': data.type,
@@ -162,7 +152,6 @@ SocketService.on('connection', function(socket) {
 app.get('/', function (req, res) {
   res.send('' + book.users.length);
   console.log(book.users);
-
 });
 
 app.listen(3000, function () {
