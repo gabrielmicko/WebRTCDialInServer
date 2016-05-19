@@ -1,2 +1,3 @@
-Running the server.
+#Running the server.
+npm install
 npm start
