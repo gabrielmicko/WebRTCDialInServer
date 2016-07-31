@@ -1,10 +1,12 @@
 {
   "name": "webrtcdialinserver",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "WebRTC Dial In signalling server",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
-    "start": "nodemon index.js --exec babel-node --presets es2015,stage-2"
+    "start": "node lib/index.js",
+    "dev": "nodemon ./app/index.js --exec babel-node --presets es2015,stage-2",
+    "build": "babel app -d lib --presets es2015,stage-2"
   },
   "author": "Gabriel Micko",
   "license": "ISC",
@@ -17,6 +19,7 @@
   },
   "dependencies": {
     "express": "^4.13.4",
+    "nconf": "^0.8.4",
     "randomstring": "^1.1.4"
   }
 }
